@@ -7,13 +7,18 @@
     </head>
 <body>
     <h1>Liste aller registierten User in der DB</h1>
-
-    <table>
+    <p>
+        <a th:href="@{/newUser}">neuen User anlegen</a>
+    </p>
+    <table border="1">
         <thead>
             <tr>
                 <th>User-Id</th>
                 <th>Nachname</th>
                 <th>Vorname</th>
+                <th>Geschlecht</th>
+                <th>Land</th>
+                <th>Aktionen</th>
             </tr>
         </thead>
         <tbody>
@@ -21,6 +26,15 @@
                 <td th:text="${user.id}">User-Id</td>
                 <td th:text="${user.lastname}">Nachname</td>
                 <td th:text="${user.firstname}">Vorname</td>
+                <td th:text="${user.sex}">Geschlecht</td>
+                <td th:text="${user.country}">Land</td>
+                <td>
+                    <a th:href="@{'/edit_user/' + ${user.id}}">Bearbeiten</a>
+                    <a th:href="@{'/delete_user/' + ${user.id}}"
+                       onclick="return confirm('Möchten Sie wirklich diesen User löschen?')"
+                    >  Löschen</a>
+                
+                </td>
             </tr>
         </tbody>    
     </table>

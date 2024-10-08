@@ -7,5 +7,10 @@
 </head>
 <body>
     <h1>Der neue User wurde in der Datenbank gespeichert!</h1>
+    <br>
+    <form th:action="@{/users}" method="get">
+        <br>
+        <button type="submit">alle User anzeigen</button>
+    </form>
 </body>
 </html>

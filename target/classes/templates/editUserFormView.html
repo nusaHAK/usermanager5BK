@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Benutzerdaten ändern</title>
+</head>
+<body>
+    <h1>Benutzerdaten ändern</h1>
+    <form th:action="@{/save_user}" th:object="${user}" method="post">
+
+        <!-- Sobald das Formular geladen wird, werden die Daten aus dem user-Objekt
+            über die Methoden user.getFirstname() und user.getLastname() in die 
+            jeweiligen Formularfelder geladen.
+        -->
+
+        <div>
+            <!-- Wenn der Primärschlüssel nicht gesetzt wird. Wird statt eines 
+                 UPDATEs ein INSERT in die DB vorgenommen. Deshalb muss der Wert 
+                 der id versteckt mitgegeben werden. -->
+            <input type="hidden" th:field="*{id}" />
+        </div>
+        <div>
+            <label for="firstname">Vorname:</label>
+            <input type="text" id="firstname" th:field="*{firstname}" placeholder="Vorname"/>
+        </div>
+        <div>
+            <label for="lastname">Nachname:</label>
+            <input type="text" id="lastname" th:field="*{lastname}" placeholder="Nachname"/>
+        </div>
+        <div>
+            <label>Geschlecht:</label><br/>
+            <input type="radio" th:field="*{sex}" value="männlich" /> Männlich<br/>
+            <input type="radio" th:field="*{sex}" value="weiblich" /> Weiblich<br/>
+            <input type="radio" th:field="*{sex}" value="divers" /> Divers<br/>
+
+        </div>
+        <div>
+            <!-- befüllen des Attributs country mit dem ausgewählten Land -->
+            <label>Land:</label>
+            <select th:field="*{country}">
+                <option th:each="tempCountry : ${countries}"
+                        th:value="${tempCountry}" th:text="${tempCountry}" >
+                </option>
+            </select>
+        </div>
+        <div>
+            <!-- Sobald der Submit-Button geklickt wird, werden die Daten aus den 
+                Formularelementen mittels der user.set-Methoden (user.setFirstname(..))
+                in das user-Objekt übernommen.
+                Danach wird das Objekt weitergeleitet an die Route /save_user.
+            -->
+            <button type="submit">geänderte Daten speichern</button>
+        </div>
+    </form>
+</body>
+</html>

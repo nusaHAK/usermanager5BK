@@ -16,6 +16,8 @@ public class User {
     //Attribute - Felder
     private String firstname;
     private String lastname;
+    private String country;
+    private String sex;
     
     //Standardkonstruktor
     public User() {
@@ -28,6 +30,7 @@ public class User {
     }
 
     //GETTER/SETTER für ALLE Attribute
+    
     public String getFirstname() {
         return firstname;
     }
@@ -50,6 +53,22 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
     

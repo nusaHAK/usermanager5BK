@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Neuen Benutzer erstellen</title>
+    <meta charset="UTF-8">
 </head>
 <body>
     <h1>Neuen Benutzer erstellen</h1>
@@ -13,6 +14,22 @@
         <div>
             <label for="lastname">Nachname:</label>
             <input type="text" id="lastname" th:field="*{lastname}" placeholder="Nachname"/>
+        </div>
+        <div>
+            <label>Geschlecht:</label><br/>
+            <input type="radio" th:field="*{sex}" value="männlich" /> Männlich<br/>
+            <input type="radio" th:field="*{sex}" value="weiblich" /> Weiblich<br/>
+            <input type="radio" th:field="*{sex}" value="divers" /> Divers<br/>
+
+        </div>
+        <div>
+            <!-- befüllen des Attributs country mit dem ausgewählten Land -->
+            <label>Land:</label>
+            <select th:field="*{country}">
+                <option th:each="tempCountry : ${countries}"
+                        th:value="${tempCountry}" th:text="${tempCountry}" >
+                </option>
+            </select>
         </div>
         <div>
             <button type="submit">Speichern</button>
